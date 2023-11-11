@@ -1,0 +1,276 @@
+openapi: 3.0.0
+info:
+  title: API do Projeto Viterbo
+  description: API para gerenciamento de eventos e atividades.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+    description: Servidor de Desenvolvimento
+
+paths:
+  /eventos:
+    get:
+      summary: Lista todos os eventos
+      responses:
+        '200':
+          description: Uma lista de eventos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Evento'
+    post:
+      summary: Cria um novo evento
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Evento'
+      responses:
+        '201':
+          description: Evento criado
+        '400':
+          description: Dados inválidos
+
+  /eventos/{id}:
+    get:
+      summary: Detalhes de um evento específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalhes do evento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Evento'
+        '404':
+          description: Evento não encontrado
+    put:
+      summary: Atualiza um evento específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Evento'
+      responses:
+        '200':
+          description: Evento atualizado
+        '404':
+          description: Evento não encontrado
+    delete:
+      summary: Deleta um evento específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Evento deletado
+        '404':
+          description: Evento não encontrado
+
+  /eventos/{id}/atividades:
+    get:
+      summary: Lista atividades de um evento
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Uma lista de atividades do evento
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Atividade'
+    post:
+      summary: Cria uma nova atividade em um evento
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Atividade'
+      responses:
+        '201':
+          description: Atividade criada
+        '400':
+          description: Dados inválidos
+
+  /atividades/{id}:
+    put:
+      summary: Atualiza uma atividade específica
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Atividade'
+      responses:
+        '200':
+          description: Atividade atualizada
+        '404':
+          description: Atividade não encontrada
+    delete:
+      summary: Deleta uma atividade específica
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Atividade deletada
+        '404':
+          description: Atividade não encontrada
+          
+  /usuarios:
+    post:
+      summary: Cadastra um novo usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '201':
+          description: Usuário criado
+        '400':
+          description: Dados inválidos
+
+  /usuarios/{id}:
+    get:
+      summary: Detalhes de um usuário específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Informações do usuário
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+        '404':
+          description: Usuário não encontrado
+    put:
+      summary: Atualiza um usuário específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '200':
+          description: Usuário atualizado
+        '404':
+          description: Usuário não encontrado
+    delete:
+      summary: Deleta um usuário específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário deletado
+        '404':
+          description: Usuário não encontrado
+
+components:
+  schemas:
+    Evento:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        descricao:
+          type: string
+        dataInicio:
+          type: string
+          format: date
+        dataFim:
+          type: string
+          format: date
+
+    Atividade:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        descricao:
+          type: string
+        data:
+          type: string
+          format: date-time
+        eventoId:
+          type: integer
+          format: int64
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nome:
+          type: string
+        email:
+          type: string
+          format: email
+        # Adicione outras propriedades conforme necessário, como senha, etc.
+
+          
+          
+          
