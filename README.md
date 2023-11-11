@@ -2,6 +2,15 @@
 
 API REST para gerenciamento de eventos e atividades. Esta API permite criar, gerenciar e deletar eventos e atividades, além de gerenciar registros de usuários.
 
+## Criadores
+
+
+Jonathan Silva de Sá
+Marcio Aguiar Brito
+Márcio de Amorim Machado Ferreira
+Pedro Paulo
+Victor
+
 ## Configuração Local
 
 Para executar esta API localmente, siga os passos abaixo:
