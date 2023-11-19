@@ -4,10 +4,10 @@ API REST para gerenciamento de eventos e atividades. Esta API permite criar, ger
 
 ## Criadores
 
-Jonathan Silva de Sá
-Marcio Aguiar Brito
-Márcio de Amorim Machado Ferreira
-Pedro Paulo Sobral de Moraes
+Jonathan Silva de Sá;
+Marcio Aguiar Brito;
+Márcio de Amorim Machado Ferreira;
+Pedro Paulo Sobral de Moraes;
 Victor Correa da Silva Moreira
 
 ## Configuração Local
