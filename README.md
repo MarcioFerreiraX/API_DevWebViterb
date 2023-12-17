@@ -3,10 +3,15 @@
 O Projeto Viterbo é uma API REST desenvolvida para gerenciar eventos e atividades relacionadas. Com esta API, é possível criar, editar, visualizar e excluir eventos, além de gerenciar atividades e usuários. Este sistema é ideal para organizações que necessitam de uma solução eficaz para o gerenciamento de eventos e atividades.
 
 ## Criadores
-Jonathan Silva de Sá
-Marcio Aguiar Brito
-Márcio de Amorim Machado Ferreira
-Pedro Paulo Sobral de Moraes
+
+Jonathan Silva de Sá;
+
+Marcio Aguiar Brito;
+
+Márcio de Amorim Machado Ferreira;
+
+Pedro Paulo Sobral de Moraes; e
+
 Victor Correa da Silva Moreira
 
 ## Tecnologias Utilizadas
