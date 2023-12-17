@@ -40,7 +40,7 @@ public class Edicao {
 	@Column(name = "cidade", nullable = false)
 	private String cidade;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "evento_id")
 	@JsonBackReference
 	private Evento evento;

@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -101,5 +102,14 @@ public class AtividadeController {
 		user.removeAtividadeFavorita(atividade);
 		userRepository.save(user);
 		return ResponseEntity.ok().build();
+	}
+
+	@GetMapping("/favoritas/{userId}")
+	public ResponseEntity<List<Atividade>> getAtividadesFavoritas(@PathVariable(value = "userId") Long userId) {
+		User user = userRepository.findById(userId)
+				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com ID: " + userId));
+
+		List<Atividade> atividadesFavoritas = new ArrayList<>(user.getAtividadesFavoritas());
+		return ResponseEntity.ok(atividadesFavoritas);
 	}
 }
