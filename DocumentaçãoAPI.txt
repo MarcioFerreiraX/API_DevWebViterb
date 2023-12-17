@@ -1,0 +1,186 @@
+Roteiro:
+
+-----------------------------
+Usuário Administrador:
+-----------------------------
+Cadastra evento
+POST http://localhost:8080/api/eventos
+{
+    "nome": "Nome do Evento",
+    "sigla": "SIGLA",
+    "descricao": "Descrição detalhada do evento",
+    "caminho": "/caminho-do-evento"
+}
+
+
+
+edita evento
+PUT http://localhost:8080/api/eventos/{id}
+{
+    "nome": "Nome do Evento Atualizado",
+    "sigla": "SIGLA-UPD",
+    "descricao": "Nova descrição do evento",
+    "caminho": "/novo-caminho-do-evento"
+}
+
+
+remove evento
+DELETE http://localhost:8080/api/eventos/{id}
+
+
+cadastra edição de evento
+POST http://localhost:8080/api/edicoes
+{
+    "numero": 1,
+    "ano": 2023,
+    "dataInicial": "2023-12-01",
+    "dataFinal": "2023-12-05",
+    "cidade": "Nome da Cidade",
+    "evento": {
+        "id": 1 // ID do evento ao qual essa edição pertence
+    }
+}
+
+edita edição de evento
+PUT http://localhost:8080/api/edicoes/{id}
+{
+    "numero": 2, // Novo número da edição
+    "ano": 2024, // Novo ano
+    "dataInicial": "2024-01-01",
+    "dataFinal": "2024-01-06",
+    "cidade": "Nova Cidade",
+    "evento": {
+        "id": 1 // ID do evento ao qual essa edição pertence
+    }
+}
+
+
+remove edição de evento
+DELETE http://localhost:8080/api/edicoes/{id}
+
+
+configura organizador do evento
+PUT http://localhost:8080/api/edicoes/{edicaoId}/organizador/{organizadorId}
+
+
+
+-----------------------------
+Organizador:
+-----------------------------
+
+edita dados da edição do evento
+PUT http://localhost:8080/api/edicoes/{id}
+
+{
+    "numero": 2,
+    "ano": 2024,
+    "dataInicial": "2024-01-10",
+    "dataFinal": "2024-01-15",
+    "cidade": "Cidade Atualizada",
+    "evento": {
+        "id": 1
+    }
+}
+
+
+Cadastra espaço
+POST http://localhost:8080/api/espacos
+{
+    "nome": "Auditório Principal",
+    "localizacao": "Endereço do Espaço",
+    "capacidade": 100
+}
+
+
+edita espaço
+PUT http://localhost:8080/api/espacos/{id}
+{
+    "nome": "Auditório Secundário",
+    "localizacao": "Novo Endereço do Espaço",
+    "capacidade": 150
+}
+
+
+remove espaço
+DELETE http://localhost:8080/api/espacos/{id}
+
+cria atividade
+POST http://localhost:8080/api/atividades
+{
+    "nome": "Workshop de Tecnologia",
+    "tipo": "WORKSHOP",
+    "descricao": "Descrição do Workshop",
+    "data": "2024-01-12T09:00:00",
+    "horarioInicial": "2024-01-12T09:00:00",
+    "horarioFinal": "2024-01-12T12:00:00",
+    "espaco": {
+        "id": 1
+    }
+}
+
+
+edita atividade
+PUT http://localhost:8080/api/atividades/{id}
+{
+    "nome": "Painel de Discussão",
+    "tipo": "PAINEL",
+    "descricao": "Nova Descrição do Painel",
+    "data": "2024-01-13T14:00:00",
+    "horarioInicial": "2024-01-13T14:00:00",
+    "horarioFinal": "2024-01-13T16:00:00",
+    "espaco": {
+        "id": 2
+    }
+}
+
+remove atividade
+DELETE http://localhost:8080/api/atividades/{id}
+
+
+-----------------------------
+Usuário Comum (Não Logado):
+-----------------------------
+Cria usuário
+POST http://localhost:8080/api/users
+{
+    "login": "novoUsuario",
+    "email": "novousuario@example.com",
+    "nome": "Novo Usuario",
+    "afiliacao": "Instituição X",
+    "senha": "senhaSegura123"
+}
+
+Consulta Eventos
+GET http://localhost:8080/api/eventos
+
+Consulta Evento Específico
+GET http://localhost:8080/api/eventos/{id}
+
+visualiza todas as atividades:
+GET http://localhost:8080/api/atividades
+
+
+visualiza uma atividade
+GET http://localhost:8080/api/atividades/{id}
+
+-----------------------------
+Usuário comum (Logado):
+-----------------------------
+visualiza todas as atividades:
+GET http://localhost:8080/api/atividades
+
+
+visualiza uma atividade
+GET http://localhost:8080/api/atividades/{id}
+
+
+
+favorita a atividade
+POST http://localhost:8080/api/atividades/{atividadeId}/favoritar
+
+
+desfavorita a atividade
+DELETE http://localhost:8080/api/atividades/{atividadeId}/desfavoritar
+
+
+
